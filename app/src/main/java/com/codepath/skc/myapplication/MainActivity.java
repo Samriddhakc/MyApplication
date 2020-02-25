@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 launchCamera();
             }
         });
+
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

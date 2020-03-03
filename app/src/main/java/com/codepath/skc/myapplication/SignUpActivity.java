@@ -2,6 +2,7 @@ package com.codepath.skc.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -50,12 +51,23 @@ public class SignUpActivity extends AppCompatActivity {
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
                 if (e == null) {
+                    goBack();
                     Log.i(TAG, "succesfullly registered");
+
                 } else {
                     Log.e(TAG, "cannot register user", e);
                 }
             }
         });
+    }
+
+    private void goBack() {
+        Toast.makeText(this, "Successfully signed up!",Toast.LENGTH_SHORT).show();
+        ParseUser.logOut();
+        Log.i(TAG,"Inisde go back!");
+        Intent i=new Intent(this,LoginActivity.class);
+        startActivity(i);
+        finish();
     }
 
 }
